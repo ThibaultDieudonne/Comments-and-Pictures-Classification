@@ -2,3 +2,7 @@ Questions:
 
 Mise à jour via GraphQL ou API normale (existe-t-il un moyen dde récuperer les modifications après une date spécifique) ?
 
+Note:
+
+tar xvf yelp_dataset
+tar xvf yelp_photos
