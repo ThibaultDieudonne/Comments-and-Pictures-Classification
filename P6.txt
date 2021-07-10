@@ -4,27 +4,35 @@ Mise à jour via GraphQL ou API normale (existe-t-il un moyen de récuperer les mo
 
 word2vec can't deal with unknown words => Issue ?
 
-Gensim ?
-
-Pipelines ?
-
 Doc topic modelling ?
 
 Doc learning rate / decay ?
 
+Détection de sentiment ?
 
+on va supprimer les mots les plus fréquents du corpus et considérer qu'il font partie du vocabulaire commun et n'apportent aucune information
+=> pratique qui va supprimer à coup sur great, good, bad, etc ... ?
+
+---------------------------------------
+
+Pipelines ? => sklearn
+
+---------------------------------------
 
 Notes:
 
-tar xvf yelp_dataset
-tar xvf yelp_photos
+tar xvf yelp_dataset.tar
+tar xvf yelp_photos.tar
 
-on va supprimer les mots les plus fréquents du corpus et considérer qu'il font partie du vocabulaire commun et n'apportent aucune information
-=> pratique dégueulasse qui va supprimer à coup sur great, good, bad, etc ...
 
+une justification du fait d’appliquer une réduction de dimension sur les données textes et images a été donnée => pour l'affichage
 
 Doc:
 
-https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html#sphx-glr-auto-examples-tutorials-run-word2vec-py
+word2vec: https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html#sphx-glr-auto-examples-tutorials-run-word2vec-py
 
 precomputed embedding: https://fasttext.cc/docs/en/english-vectors.html
+
+sentiment/topic classification: https://aclanthology.org/P12-2018/
+
+https://colah.github.io/posts/2015-08-Understanding-LSTMs/
