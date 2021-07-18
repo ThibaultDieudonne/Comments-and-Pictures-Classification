@@ -1,21 +1,16 @@
 Questions:
 
+Meilleure pratique que supprimer les mots les plus utilisés ?
+
 Mise à jour via GraphQL ou API normale (existe-t-il un moyen de récuperer les modifications après une date spécifique) ?
-
-word2vec can't deal with unknown words => Issue ?
-
-Doc topic modelling ?
 
 Doc learning rate / decay ?
 
-Détection de sentiment ?
+Balance target ?
 
-on va supprimer les mots les plus fréquents du corpus et considérer qu'il font partie du vocabulaire commun et n'apportent aucune information
-=> pratique qui va supprimer à coup sur great, good, bad, etc ... ?
+How to use all data ?
 
----------------------------------------
-
-Pipelines ? => sklearn
+Why reglog predicts in [0;1( ?
 
 ---------------------------------------
 
