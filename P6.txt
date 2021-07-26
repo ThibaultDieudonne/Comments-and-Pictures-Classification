@@ -1,18 +1,50 @@
+CNN:
+
+convolution: détection de features
+pooling: réduction de dimensions (2x2 / 3x3)
+correction ReLU: max(x, 0)
+fully-connected: couche de sortie (propabilité d'appartenance à chaque classe), pas propre au CCN donc
+
+hyperparametres: https://openclassrooms.com/fr/courses/4470531-classez-et-segmentez-des-donnees-visuelles/5088816-apprenez-a-construire-un-cnn-et-gagnez-du-temps-avec-le-transfer-learning
+
+----------------------------------------
+
 Questions:
 
-Meilleure pratique que supprimer les mots les plus utilisés ?
+Images:
 
-Mise à jour via GraphQL ou API normale (existe-t-il un moyen de récuperer les modifications après une date spécifique) ?
+  Comment lier une classification à des charactéristiques compréhensives (comme intérieur / extérieur) => fine-tuning partiel avec le CNN de Keras ? Labellisation manuelle ?
 
-Doc learning rate / decay ?
+  Classification multiclasse ? (une image pourrait appartenir à plusieurs des 1000 classes)
 
-Balance target ?
+Texte:
 
-How to use all data ?
+  En prenant seulement une fraction des données, aucun mot n'apparait plus de 40% du temps. Quand même supprimer ?
 
-Why reglog predicts in [0;1( ?
+  Méthodo sujets d'insatisfaction: détection de sujet sur les commentaires négatifs ? Sujets qui diffèrent entre commentaires négatifs et positifs ?
+
+Divers:
+
+  Mise à jour via GraphQL ou API normale (existe-t-il un moyen de récuperer les modifications après une date spécifique) ?
+
+  Doc learning rate / decay ?
+
+-----------------------------------------
+
+Meilleure pratique que supprimer les mots les plus utilisés ? => non
+
+Balance target ? => pourquoi pas, sans bruit
+
+How to use all data ? => scikit learn chunks
 
 ---------------------------------------
+
+Traitement d'image: SIFT (+ paper, openCV), 
+
+Architecture transformers (modèle d'attention, permet de prendre en compte les négations par exemple)
+
+Ressources RN: kaggle, towardDS, tensorFlow section tutos, Keras, 
+
 
 Notes:
 
@@ -31,3 +63,7 @@ precomputed embedding: https://fasttext.cc/docs/en/english-vectors.html
 sentiment/topic classification: https://aclanthology.org/P12-2018/
 
 https://colah.github.io/posts/2015-08-Understanding-LSTMs/
+
+https://fr.wikipedia.org/wiki/Scale-invariant_feature_transform
+
+https://simoninithomas.github.io/deep-rl-course/
