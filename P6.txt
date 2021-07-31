@@ -1,3 +1,19 @@
+Todo:
+
+Chunks
+
+Topic detection sur les mauvais commentaires après avoir enlevé les X mots les plus utilisés
+
+Embedding: # model1 = gensim.models.Word2Vec(tokenized_text, min_count = 1, vector_size = 100, window = 5)
+
+transfer learning avec fine-tuning partiel en utilisant un CNN (de Keras ?) et les données labelisées de Yelp (need GPU tensorflow)
+
+Enrichissement de la bdd avec l'API
+
+Visualisation des données avec réduction de dimension
+
+----------------------------------------
+
 CNN:
 
 convolution: détection de features
@@ -11,23 +27,42 @@ hyperparametres: https://openclassrooms.com/fr/courses/4470531-classez-et-segmen
 
 Questions:
 
+Learning avec GPU ?
+
+Bénéfice pipelines ?
+
+"le bruit sur les images a été filtré" ?
+
+"l’histogramme a été égalisée sur les images" ?
+
+---------------------------------------
+
+Quand utiliser embedding ? => https://www.kaggle.com/vukglisovic/classification-combining-lda-and-word2vec
+
+Bon CNN de base pour "interior", "food", "drink", "menu", "outside" ?
+
+----------------------------------------
+
 Images:
 
-  Comment lier une classification à des charactéristiques compréhensives (comme intérieur / extérieur) => fine-tuning partiel avec le CNN de Keras ? Labellisation manuelle ?
+  Comment lier une classification à des charactéristiques compréhensives (comme intérieur / extérieur)
+  => transfer learning avec fine-tuning partiel en utilisant le CNN de Keras ? => Oui
+  Necessite labellisation manuelle ? => Non
 
-  Classification multiclasse ? (une image pourrait appartenir à plusieurs des 1000 classes)
+  Classification multiclasse ? (une image pourrait appartenir à plusieurs des 1000 classes) => réseau spécifique avec multi-labelisation
 
 Texte:
 
-  En prenant seulement une fraction des données, aucun mot n'apparait plus de 40% du temps. Quand même supprimer ?
+  En prenant seulement une fraction des données, aucun mot n'apparait plus de 40% du temps. Quand même supprimer ? => non
 
   Méthodo sujets d'insatisfaction: détection de sujet sur les commentaires négatifs ? Sujets qui diffèrent entre commentaires négatifs et positifs ?
+  => scorer sujets détectés avec sentiment detection // LDA juste sur commentaires négatifs
 
 Divers:
 
   Mise à jour via GraphQL ou API normale (existe-t-il un moyen de récuperer les modifications après une date spécifique) ?
 
-  Doc learning rate / decay ?
+  Doc learning rate / decay ? => default_rate = 0.001, custom decay
 
 -----------------------------------------
 
@@ -67,3 +102,5 @@ https://colah.github.io/posts/2015-08-Understanding-LSTMs/
 https://fr.wikipedia.org/wiki/Scale-invariant_feature_transform
 
 https://simoninithomas.github.io/deep-rl-course/
+
+https://register.gotowebinar.com/recording/5532038138285671435
