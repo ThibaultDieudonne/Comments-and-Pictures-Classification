@@ -1,4 +1,5 @@
 /yelp_dataset
 /yelp_photos
+/preprocessed_imgs
 /.ipynb_checkpoints
 photos.json

@@ -1,8 +1,8 @@
 Todo:
 
-Chunks
+preprocess text with Chunks -> save & load full
 
-transfer learning avec fine-tuning partiel en utilisant un CNN (de Keras ?) et les données labelisées de Yelp (need GPU tensorflow)
+transfer learning
 
 Enrichissement de la bdd avec l'API
 
@@ -12,23 +12,7 @@ Visualisation des données avec réduction de dimension
 
 Questions:
 
-Hyperparameters ? (batch_size, epochs)
-
-Conversion en tensor pas scalable ?
-
-Ca semble pas très opti de devoir charger et tokeniser pour trouver les mots les plus fréquents, pour ensuite recharger et les supprimer + process 
-
-Learning avec GPU ? Numba ?
-
-Bénéfice pipelines ?
-
-"le bruit sur les images a été filtré" ?
-
-"l’histogramme a été égalisée sur les images" ?
-
-Quand utiliser embedding ?
-  [https://www.kaggle.com/vukglisovic/classification-combining-lda-and-word2vec
-  model1 = gensim.models.Word2Vec(tokenized_text, min_count = 1, vector_size = 100, window = 5)]
+Différence test / validation
 
 ----------------------------------------
 
@@ -36,24 +20,24 @@ Divers:
 
   Mise à jour via GraphQL ou API normale (existe-t-il un moyen de récuperer les modifications après une date spécifique) ?
 
-  Doc learning rate / decay ? => default_rate = 0.001, custom decay
-
 -----------------------------------------
-
-Balance target ? => pourquoi pas, sans bruit
-
------------------------------------------
-
-Architecture transformers (modèle d'attention, permet de prendre en compte les négations par exemple)
 
 Notes:
+
+=> Utiliser tutos tensorflow
 
 tar xvf yelp_dataset.tar
 tar xvf yelp_photos.tar
 
 une justification du fait d’appliquer une réduction de dimension sur les données textes et images a été donnée => pour l'affichage
 
+lvl++: Architecture transformers (modèle d'attention, permet de prendre en compte les négations par exemple)
+
+-----------------------------------------
+
 Doc:
+
+transfer learning example: https://colab.research.google.com/github/kylemath/ml4a-guides/blob/master/notebooks/transfer-learning.ipynb
 
 image preprocessing: https://towardsdatascience.com/image-pre-processing-c1aec0be3edf
 
