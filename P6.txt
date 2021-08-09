@@ -2,7 +2,7 @@ Todo:
 
 preprocess text with Chunks -> save & load full
 
-transfer learning
+transfer learning OU juste prendre les vecteurs en sortie de flatten et faire une regression dessus
 
 Enrichissement de la bdd avec l'API
 
@@ -14,7 +14,7 @@ Questions:
 
 Différence test / validation ?
 
-Steps per epoch ?
+Steps per epoch ? = nb de batch avant fin d'époque
 
 ----------------------------------------
 
@@ -27,6 +27,8 @@ Divers:
 Notes:
 
 => Utiliser tutos tensorflow
+
+model.summary
 
 tar xvf yelp_dataset.tar
 tar xvf yelp_photos.tar
