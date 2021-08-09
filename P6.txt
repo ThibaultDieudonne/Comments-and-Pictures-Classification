@@ -12,7 +12,9 @@ Visualisation des données avec réduction de dimension
 
 Questions:
 
-Différence test / validation
+Différence test / validation ?
+
+Steps per epoch ?
 
 ----------------------------------------
 
