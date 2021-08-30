@@ -6,7 +6,7 @@ transfer learning OU juste prendre les vecteurs en sortie de flatten et faire un
 
 Enrichissement de la bdd avec l'API
 
-Visualisation des données avec réduction de dimension
+Visualisation des données
 
 ----------------------------------------
 
@@ -14,7 +14,11 @@ Questions:
 
 Différence test / validation ?
 
-Steps per epoch ? = nb de batch avant fin d'époque
+Représentations graphiques => nuages de mots, tsne pour les images
+
+API limitante
+
+ID Azure
 
 ----------------------------------------
 

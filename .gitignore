@@ -3,3 +3,6 @@
 /preprocessed_imgs
 /.ipynb_checkpoints
 photos.json
+api.key
+preprocessed_text.csv
+preprocessed_reviews.csv
