@@ -1,24 +1,28 @@
 Todo:
 
-preprocess text with Chunks -> save & load full
-
 transfer learning OU juste prendre les vecteurs en sortie de flatten et faire une regression dessus
 
-Enrichissement de la bdd avec l'API
+Enrichissement de la bdd avec l'API (tout récupérer)
 
 Visualisation des données
+
+Fiche memo sur les sujets importants
+
+----------------------------------------
+
+Ideas:
+
+afficher des images au cours du preprocess
+
+
 
 ----------------------------------------
 
 Questions:
 
-Différence test / validation ?
+Faible montée en charge CG
 
-Représentations graphiques => nuages de mots, tsne pour les images
-
-API limitante
-
-ID Azure
+Représentations graphiques => nuages de mots, tsne sur les preds pour les images
 
 ----------------------------------------
 
@@ -45,9 +49,7 @@ lvl++: Architecture transformers (modèle d'attention, permet de prendre en compt
 
 Doc:
 
-transfer learning example: https://colab.research.google.com/github/kylemath/ml4a-guides/blob/master/notebooks/transfer-learning.ipynb
-
-image preprocessing: https://towardsdatascience.com/image-pre-processing-c1aec0be3edf
+https://www.kaggle.com/tiramysu/natural-language-processing-yelp
 
 word2vec: https://radimrehurek.com/gensim/auto_examples/tutorials/run_word2vec.html#sphx-glr-auto-examples-tutorials-run-word2vec-py
 
@@ -57,6 +59,3 @@ sentiment/topic classification: https://aclanthology.org/P12-2018/
 
 https://colah.github.io/posts/2015-08-Understanding-LSTMs/
 
-https://fr.wikipedia.org/wiki/Scale-invariant_feature_transform
-
-https://simoninithomas.github.io/deep-rl-course/
