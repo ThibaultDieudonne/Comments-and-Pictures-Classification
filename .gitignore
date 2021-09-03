@@ -6,3 +6,4 @@ photos.json
 api.key
 preprocessed_text.csv
 preprocessed_reviews.csv
+/vgg16_transfered_model
