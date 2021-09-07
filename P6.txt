@@ -6,32 +6,27 @@ Visualisation des données
 
 Fiche memo sur les sujets importants
 
+Envisager baseline plus basique pour les images => self CNN (reprendre architecture tuto)
+
 ----------------------------------------
 
 Ideas:
 
 afficher des images au cours du preprocess
 
-
-
 ----------------------------------------
 
 Questions:
 
 Quel genre de precision est attendu ?
+
 Parametrage couches du dessus ?
 
 Faible montée en charge CG
 
-Représentations graphiques => nuages de mots, tsne sur les preds pour les images
+Discuter autres approches
 
-Fonction de perte
-
-----------------------------------------
-
-Divers:
-
-  Mise à jour via GraphQL ou API normale (existe-t-il un moyen de récuperer les modifications après une date spécifique) ?
+Représentations graphiques => tsne sur les preds pour les images
 
 -----------------------------------------
 
