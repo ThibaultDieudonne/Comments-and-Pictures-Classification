@@ -1,12 +1,12 @@
 Todo:
 
-transfer learning
+Rerun le modèle en extraction de features pour vérifier si rien n'est différent après le changement d'input
 
 Visualisation des données
 
 Fiche memo sur les sujets importants
 
-Envisager baseline plus basique pour les images => self CNN (reprendre architecture tuto)
+Faire des stats sur les erreurs
 
 ----------------------------------------
 
@@ -18,28 +18,14 @@ afficher des images au cours du preprocess
 
 Questions:
 
-Quel genre de precision est attendu ?
-
-Parametrage couches du dessus ?
-
-Faible montée en charge CG
-
-Discuter autres approches
-
-Représentations graphiques => tsne sur les preds pour les images
+Représentations graphiques => tsne ?
 
 -----------------------------------------
 
 Notes:
 
-=> Utiliser tutos tensorflow
-
-model.summary
-
 tar xvf yelp_dataset.tar
 tar xvf yelp_photos.tar
-
-une justification du fait d’appliquer une réduction de dimension sur les données textes et images a été donnée => pour l'affichage
 
 lvl++: Architecture transformers (modèle d'attention, permet de prendre en compte les négations par exemple)
 
