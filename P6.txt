@@ -1,13 +1,14 @@
 Todo:
 
-Rerun le modèle en extraction de features pour vérifier si rien n'est différent après le changement d'input
-
 Visualisation des données
 
 Fiche memo sur les sujets importants
 
 Faire des stats sur les erreurs
 
+Couche supplémentaire avec Dense ?
+
+Image generator ? => on a déjà beaucoup d'images
 ----------------------------------------
 
 Ideas:
@@ -17,6 +18,8 @@ afficher des images au cours du preprocess
 ----------------------------------------
 
 Questions:
+
+Comment améliorer encore la précision ?
 
 Représentations graphiques => tsne ?
 

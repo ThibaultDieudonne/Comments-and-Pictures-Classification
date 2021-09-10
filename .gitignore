@@ -7,5 +7,5 @@ api.key
 preprocessed_text.csv
 preprocessed_reviews.csv
 /custom_cnn
-/vgg_16_finetuned
+/vgg16_finetuned
 /vgg_16_fully_finetuned
