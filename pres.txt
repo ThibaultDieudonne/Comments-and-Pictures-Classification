@@ -1,34 +1,39 @@
 1 - Bonjour, ...
 
 2 - Projet pour la startup Avis Restau, qui est une plateforme qui met en relation des clients et des restaurants.
-    Objectifs: détecter automatiquement les sujets d'insatisfaction dans les commentaires et labeliser automatiquement des photos (intérieurs, extérieur, menu, boisson, nourriture)
+    2 Objectifs: détecter automatiquement les sujets d'insatisfaction dans les commentaires et labeliser automatiquement des photos (intérieurs, extérieur, menu, boisson, nourriture)
 
-3 - [Décrire]
+3 - Les données proviennent de Yelp, un site américain de notation d'hotels et restaurants
+    [Décrire]
     On utilisera les fichiers reviews et photos
 
 4 - Il fallait s'assurer de la possibilité de collecter de nouvelles données via l'API graphQL de yelp.
-    Une limitation est le nombre de restaurants renvoyés dans une requête (max 50 quand il nous en faut 200)
+    Une limitation de l'API est le nombre de restaurants renvoyés dans une requête (max 50 quand il nous en faut 200)
     Une limitation non contournable est le nombre de reviews renvoyées par l'API pour un restaurant (seulement 3)
     On conserve uniquement le texte et la note de chaque review
 
-5 - Notes: on supprime aussi tous les nombres
+5 - [Décrire]
+    Notes: on supprime aussi tous les nombres
            comme le fichier original était trop volumineux pour ma machine, le traitement a été effectué par batch et stocké dans un nouveau fichier, qui lui est suffisamment petit pour être traité entièrement.
 
 6 - Constater tokenization, stemming, stop words
 
 7 - Premier modèle LDA simple:
        Modèle itératif avec initialisation aléatoire (loi de dirichlet => est une famille de lois de probabilité continues pour des variables aléatoires multinomiales, c'est l'équivalent d'une loi binomiale pour des variables multinomiales)
-       => chaque mot est donc associé à un sujet de manière aléatoire
-       Une itération consiste à prendre chaque mot de chaque document et mettre à jour le thème auquel il est lié. Le nouveau thème est celui qui aurait la plus forte probabilité de générer ce mot dans ce document précis.
+       => A l'initialisation, chaque mot est donc associé à un sujet de manière aléatoire
+
+       Une itération du modèle consiste à prendre chaque mot de chaque document et mettre à jour le thème auquel il est lié. Le nouveau thème est celui qui aurait la plus forte probabilité de générer ce mot dans ce document précis.
+
        C'est un modèle qui prend en hyperparamètre le nombre de sujets à trouver. J'ai optimisé cet hyperparamètre en faisant du grid search.
-       La métrique utilisée pour l'optimisation est la cohérence CV, qui consiste à mesurer la similarité deux à deux de documents générés avec le modèle.
-       Les résultats de ce modèle n'ont pas été complètement convainquants: nombre de sujets à trouver peu stable d'une fois sur l'autre, et il est difficile d'identifier précisément les sujets identifiés par le modèle. [Décrire]
-       Multidimensionnal scaling ou Positionnement multidimensionnel: technique statistique de réduciton dimmensionnelle (comme l'ACP, mais au lieu de chercher des axes pour projeter les données, on réduit en minimisant la distance)
+       La métrique que j'ai utilisé pour l'optimisation est la cohérence CV, qui consiste à mesurer la similarité deux à deux de documents générés avec le modèle.
+
+       Les résultats donnés par ce modèle n'ont pas été complètement convainquants: le nombre de sujets à trouver est peu stable d'une fois sur l'autre, et il est difficile d'identifier précisément les sujets identifiés par le modèle. [Décrire]
+       Positionnement multidimensionnel en francais: technique de réduction dimmensionnelle (au même titre que l'ACP, mais au lieu de chercher des axes pour projeter les données, on réduit les dimensions en minimisant des distances entre points)
 
 8 - Second modèle: LDA avec TF-IDF
        TF-IDF: de l'anglais term frequency-inverse document frequency, il s'agit de représenter les mots d'un document par le produit de deux mesures.
-       Ces mesures sont la fréquence d'apparition du mot dans le document, et l'inverse de la fréquence d'apparition du mot dans l'ensemble du corpus. Ceci permet de donner un poids plus important aux mots moins fréquents, qui sont considérés comme plus discriminants.
-       Cette fois, le nombre de sujet optimal est plus stable, et la séparation des sujets après réduction de dimmension semble être de meilleure qualité.
+       Ces mesures sont la fréquence d'apparition du mot dans le document, et l'inverse de la fréquence d'apparition du mot dans l'ensemble du corpus. Ca permet de donner un poids plus important aux mots moins fréquents, qui sont considérés comme plus discriminants.
+       Cette fois, le nombre de sujet optimal est plus stable, et la séparation des sujets après réduction de dimmension semble être de meilleure qualité. [Décrire]
 
 9 - [Décrire]
 
@@ -39,13 +44,15 @@
      Egalisation d'histogramme: permet de normaliser les intensités d'une image
      Ces traitements rendent les modèles plus efficaces sur nos données.
 
-12 - CNN: Réseau de neuronnes convolutifs: Comme la plupart des réseaux de neuronnes, il s'agit d'un empilage de couches de perceptrons.
+12 - Ma première approche a été de construire mon propre réseau de neurones, un Réseau de neuronnes convolutif ou CNN.
+     Comme la plupart des réseaux de neuronnes, il s'agit d'un empilage de couches de perceptrons.
           Il utilise trois type de couches:
-            des couches fully-connected pour effectuer les prédictions
-            des couches de pooling qui permettent la réduction dimensionnelle. La pratique standard consiste à utiliser le max pooling, qui consiste à découper une image en tuiles (par exemple 2x2) et récupérer seulement la valeur maximale de chaque tuile.
-            des couches de convolution, qui consistent à appliquer un certain nombre de filtres sur une image. Les poids servant à paramétrer les filtres sont appris par le modèle.
-            pour éviter le problème de saturation du gradient et améliorer l'apprentissage, les couches de convolution sont précédées d'une fonction d'activation relu, qui remplace par 0 les valeurs négatives.
-     La fonction de perte est la fonction que l'on cherche à minimiser. J'utilise une fonction appelée entropie croisée, qui permet de quantifier la différence entre deux distributions de probabilités.
+            - des couches fully-connected pour effectuer les prédictions
+            - des couches de pooling qui permettent la réduction dimensionnelle.
+            => La pratique standard est d'utiliser ce qu'on appellele max pooling, qui consiste à découper une image en tuiles (par exemple 2x2) et à récupérer seulement la valeur maximale de chaque tuile.
+            - des couches de convolution, qui consistent à appliquer un certain nombre de filtres sur une image. Les poids servant à paramétrer les filtres sont appris par le modèle.
+            => Pour éviter le problème de saturation du gradient et améliorer l'apprentissage, les couches de convolution sont précédées d'une fonction d'activation relu, qui remplace par 0 les valeurs négatives.
+     La fonction de perte est la fonction que l'on cherche à minimiser lors de l'apprentissage. J'utilise une fonction appelée entropie croisée, qui permet de quantifier la différence entre deux distributions de probabilités.
      [Décrire]
 
 13 - VGG16 est un CNN créé par Simonyan et Zisserman de l’université d’Oxford. Il a gagné la compétition ImageNet Scale Visual Recognition Challenge en 2014. Cette compétition consiste à obtenir la meilleure précision possible dans la classification d'images.
@@ -53,7 +60,7 @@
      J'ai remplacé les couches les plus hautes pour pouvoir classifier les images de yelp dans les 5 catégories demandées.
 
 14 - En plus d'utiliser l'architecture de VGG16, on utilise aussi les poids pré-entraînés pour la collection ImageNet.
-     Dans ce modèle, les poids sont fixés, c'est-à-dire qu'il ne sont pas entraînés, à l'exception du dernier bloc de convolution, et des couches fully-connected.
+     Ici j'ai fixé les poids du modèle, c'est-à-dire qu'il ne sont pas entraînés, à l'exception de la dernière couche de convolution, et des couches fully-connected.
      J'utilise le TSNE pour visualiser les données avant la classification (les couche fully-connected), ce qui permet d'apprécier la qualité de l'extraction de features réalisée par le modèle.
      [Décrire]
 
@@ -61,7 +68,9 @@
      A noter que pour les trois modèles présentés la vitesse d'apprentissage a été optimisée par tatonnement.
      [Décrire]
 
-16 - Ces résultats sont la textualisation de la matrice de confusion.
+16 - Ces résultats sont issus de la matrice de confusion.
      [Décrire]
 
-     
++ CONCLUSION
+
++ AMELIORATIONS
