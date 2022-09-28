@@ -1,1 +1,1 @@
-# OC-Projet6
+# Projet 6 (Formation Data Scientist - Ingénieur IA)
